@@ -1,0 +1,40 @@
+# own stuff
+.test.py
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django stuff:
+api/apps/clinics/migrations/*
+!api/apps/clinics/migrations/__init__.py
+api/apps/users/migrations/*
+!api/apps/users/migrations/__init__.py
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/
+static/
+
+# nginx
+nginx/*.*
+!nginx/*.conf
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+*.env
+
+# IntelliJ
+.idea/
+
+# Visual Studio cache/options directory
+.vs/
+
+# Tox
+.tox/
