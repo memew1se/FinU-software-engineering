@@ -1,0 +1,60 @@
+version: "3"
+
+services:
+  db:
+    image: postgres:15-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    restart: always
+    environment:
+      POSTGRES_USER: "${DB_USER}"
+      POSTGRES_PASSWORD: "${DB_PASSWORD}"
+      POSTGRES_DB: "${DB_NAME}"
+      TZ: "Europe/Moscow"
+      PGTZ: "Europe/Moscow"
+
+  api:
+    expose:
+      - 8000
+    build:
+      context: api
+      dockerfile: Dockerfile
+    command: >
+      bash -c "
+      python manage.py collectstatic --noinput &&
+      gunicorn --bind 0.0.0.0:8000 --workers 2 config.wsgi:application --reload"
+    volumes:
+      - ./api:/home/api/backend
+      - static_volume:/home/api/backend/assets/static
+      - media_volume:/home/api/backend/assets/media
+    restart: always
+    env_file: .env
+    environment:
+      DB_USER: "${DB_USER}"
+      DB_PASSWORD: "${DB_PASSWORD}"
+      DB_NAME: "${DB_NAME}"
+    depends_on:
+      - db
+#      - redis
+
+#  redis:
+#    image: redis:7.0.5-alpine
+#    restart: always
+#
+#  nginx:
+#    ports:
+#      - "80:80"
+#      - "443:443"
+#    volumes:
+#      - static_volume:/backend/assets/static
+#      - media_volume:/backend/assets/media
+#    build:
+#      context: ./nginx
+#      dockerfile: Dockerfile_local
+#    depends_on:
+#      - api
+
+volumes:
+  postgres_data:
+  static_volume:
+  media_volume:
