@@ -25,12 +25,14 @@ SECRET_KEY = "django-insecure-=ur@2@x-op$3!+jub*qdcy*8o_5kb^0(*d2rh_j7d!i8semf7$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    "jazzmin",
+    
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -132,3 +134,9 @@ STATIC_URL = "api/static/"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+JAZZMIN_SETTINGS = {
+    "icons": {
+        "projects.Project": "fas fa-project-diagram",
+    }
+}
