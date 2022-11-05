@@ -41,18 +41,18 @@ services:
 #    image: redis:7.0.5-alpine
 #    restart: always
 #
-#  nginx:
-#    ports:
-#      - "80:80"
-#      - "443:443"
-#    volumes:
-#      - static_volume:/backend/assets/static
-#      - media_volume:/backend/assets/media
-#    build:
-#      context: ./nginx
-#      dockerfile: Dockerfile_local
-#    depends_on:
-#      - api
+  nginx:
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - static_volume:/backend/assets/static
+      - media_volume:/backend/assets/media
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    depends_on:
+      - api
 
 volumes:
   postgres_data:
