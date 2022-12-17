@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { data: project } = await useFetch<Project>(`/projects/${useRoute().params.id}`, {
+const { data: project } = await useFetch<Project>(`/projects/${useRoute().params.id}/`, {
   baseURL: useRuntimeConfig().public.apiBase,
 })
 </script>

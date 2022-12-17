@@ -41,6 +41,15 @@ services:
 #    image: redis:7.0.5-alpine
 #    restart: always
 #
+
+  web:
+    expose:
+      - 3000
+    restart: always
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+
   nginx:
     ports:
       - "80:80"
