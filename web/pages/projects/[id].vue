@@ -5,26 +5,16 @@ const { data: project } = await useFetch<Project>(`/projects/${useRoute().params
 </script>
 
 <template>
-  <div>
-    <h1>{{ project?.title }}</h1>
-    <p>
-      <span>Начало</span>
-      <span>{{ new Date(project?.start).toLocaleString() }}</span>
-    </p>
-    <p>
-      <span>Конец</span>
-      <span>{{ new Date(project?.end).toLocaleString() }}</span>
-    </p>
+  <div class="flex flex-col gap-y-4 bg-white px-4 py-6 rounded">
+    <h1 class="text-2xl">{{ project?.title }}</h1>
+    <p class="text-neutral-400">{{ project?.description }}</p>
+    <div class="flex gap-x-1">
+      <span class="text-neutral-400">Начало</span>
+      <span>{{ new Date(project?.start).toLocaleDateString() }}</span>
+    </div>
+    <div class="flex gap-x-1">
+      <span class="text-neutral-400">Конец</span>
+      <span>{{ new Date(project?.end).toLocaleDateString() }}</span>
+    </div>
   </div>
 </template>
-
-<style scoped>
-p {
-  display: flex;
-  gap: 4px;
-}
-
-p span:first-of-type {
-  color: gray;
-}
-</style>

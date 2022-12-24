@@ -2,18 +2,13 @@
 
 <template>
   <div>
-    <header>
-      <NuxtLink to="/">Главная</NuxtLink>
+    <header class="h-16 flex mb-10 items-center bg-white">
+      <div class="container">
+        <NuxtLink to="/">Главная</NuxtLink>
+      </div>
     </header>
-    <main>
+    <main class="container">
       <NuxtPage />
     </main>
   </div>
 </template>
-
-<style scoped>
-header {
-  padding-bottom: 16px;
-  border-bottom: 1px solid gray;
-}
-</style>

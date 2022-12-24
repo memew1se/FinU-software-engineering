@@ -5,4 +5,8 @@ export default defineNuxtConfig({
       apiBase: "http://172.17.0.1:80/api",
     },
   },
+  modules: ["@nuxtjs/tailwindcss"],
+  tailwindcss: {
+    viewer: false,
+  },
 })
