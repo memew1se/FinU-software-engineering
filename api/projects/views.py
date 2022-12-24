@@ -1,4 +1,4 @@
-from rest_framework.generics import ListAPIView, RetrieveAPIView
+from rest_framework.generics import RetrieveAPIView, ListCreateAPIView
 
 from .models import Project
 
@@ -6,7 +6,7 @@ from .models import Project
 from .serializers import ProjectSerializer
 
 
-class ProjectListAPIView(ListAPIView):
+class ProjectListAPIView(ListCreateAPIView):
     serializer_class = ProjectSerializer
     queryset = Project.objects.all()
 
